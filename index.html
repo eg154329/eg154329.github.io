@@ -784,6 +784,32 @@
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
+        // Cursor sparkle effect
+        console.log('Sparkle script loaded!');
+        const colors = ['#18d1e8', '#bf03ff', '#df01b3'];
+        let lastSparkleTime = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastSparkleTime < 30) return;
+            lastSparkleTime = now;
+            
+            console.log('Creating sparkle at', e.pageX, e.pageY);
+            
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.background = color;
+            sparkle.style.color = color;
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        });
     </script>
 </body>
 </html>
