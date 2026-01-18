@@ -134,12 +134,45 @@
         }
 
         .profile-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            border-radius: 4px;
-        }
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: brightness(0.9);
+    transition: filter 0.5s ease;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(24, 209, 232, 0.4), 
+        rgba(191, 3, 255, 0.3), 
+        rgba(223, 1, 179, 0.4));
+    mix-blend-mode: color;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.image-container:hover::before {
+    opacity: 0;
+}
+
+.image-container:hover .profile-image {
+    filter: brightness(1);
+}
 
         .about-text h1 {
             font-size: 2.5rem;
@@ -611,7 +644,9 @@
         <!-- About Section -->
         <section id="about" class="about-section">
             <div class="about-grid">
+              <div class="image-container">
                 <img src="headshot.png" alt="Emily Gover" class="profile-image" id="profileImage">
+                </div>
                 <div class="about-text">
                     <h1>Emily Gover</h1>
                     <p class="role">Customer marketing, content, and community strategist.</p>
