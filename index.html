@@ -611,7 +611,7 @@
         <!-- About Section -->
         <section id="about" class="about-section">
             <div class="about-grid">
-                <img src="" alt="Emily Gover" class="profile-image" id="profileImage">
+                <img src="headshot.png" alt="Emily Gover" class="profile-image" id="profileImage">
                 <div class="about-text">
                     <h1>Emily Gover</h1>
                     <p class="role">Customer marketing, content, and community strategist.</p>
@@ -769,7 +769,7 @@
         // Load profile image
         async function loadProfileImage() {
             try {
-                const imageData = await window.fs.readFile('tmp7z_p5_r0.jpg');
+                const imageData = await window.fs.readFile('headshot.png');
                 const blob = new Blob([imageData], { type: 'image/jpeg' });
                 const imageUrl = URL.createObjectURL(blob);
                 document.getElementById('profileImage').src = imageUrl;
