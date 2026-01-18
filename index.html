@@ -768,7 +768,7 @@
         // Load profile image
         async function loadProfileImage() {
             try {
-                const imageData = await window.fs.readFile('tmp7z_p5_r0.jpg');
+                const imageData = await window.fs.readFile('headshot.png');
                 const blob = new Blob([imageData], { type: 'image/jpeg' });
                 const imageUrl = URL.createObjectURL(blob);
                 document.getElementById('profileImage').src = imageUrl;
