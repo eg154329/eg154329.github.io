@@ -332,14 +332,14 @@
         }
 
         .tag {
-    padding: 0.25rem 0.7rem;
-    background: rgba(209, 184, 232, 0.1);
-    color: var(--text-primary);
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid #d1b8e8;
-}
+            padding: 0.25rem 0.7rem;
+            background: rgba(223, 1, 179, 0.1);
+            color: var(--text-primary);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--neon-pink);
+        }
 
         /* Recognition Section */
         .recognition-section {
@@ -568,7 +568,7 @@
             pointer-events: none;
             width: 8px;
             height: 8px;
-            animation: sparkle-fade 1.5s ease-out forwards;
+            animation: sparkle-fade 1s ease-out forwards;
             z-index: 9999;
             box-shadow: 0 0 10px currentColor;
         }
@@ -731,7 +731,7 @@
         <section id="contact" class="contact-section">
             <h2 class="section-header">Say Hello</h2>
             <p class="contact-intro">
-                If you'd like to chat or see samples of my content portfolio or program impact, drop me a line. (Or, connect with me on <a href="https://www.linkedin.com/in/egover" target="_blank" style="color: var(--neon-blue); text-decoration: none; font-weight: 500;">LinkedIn</a>.) Cheers!
+                If you'd like to chat or see samples of my content portfolio or program impact, drop me a line. Cheers! (Or, connect with me on <a href="https://www.linkedin.com/in/egover" target="_blank" style="color: var(--neon-blue); text-decoration: none; font-weight: 500;">LinkedIn</a>.)
             </p>
 
             <div class="form-success" id="formSuccess">Thanks for getting in touch!</div>
@@ -768,7 +768,7 @@
         // Load profile image
         async function loadProfileImage() {
             try {
-                const imageData = await window.fs.readFile('headshot.png');
+                const imageData = await window.fs.readFile('tmp7z_p5_r0.jpg');
                 const blob = new Blob([imageData], { type: 'image/jpeg' });
                 const imageUrl = URL.createObjectURL(blob);
                 document.getElementById('profileImage').src = imageUrl;
@@ -789,35 +789,6 @@
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
             });
-        });
-
-      // Cursor sparkle effect
-        console.log('Sparkle script loaded!');
-        const colors = ['#18d1e8', '#bf03ff', '#df01b3'];
-        let lastSparkleTime = 0;
-        
-        document.addEventListener('mousemove', (e) => {
-            const now = Date.now();
-            // Throttle to create sparkles every 80ms (more space between them)
-            if (now - lastSparkleTime < 80) return;
-            lastSparkleTime = now;
-            
-            console.log('Creating sparkle at', e.pageX, e.pageY);
-            
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = e.pageX + 'px';
-            sparkle.style.top = e.pageY + 'px';
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            sparkle.style.background = 'transparent';
-            sparkle.style.color = color;
-            
-            document.body.appendChild(sparkle);
-            
-            // Remove sparkle after animation
-            setTimeout(() => {
-                sparkle.remove();
-            }, 1500);
         });
     </script>
 </body>
