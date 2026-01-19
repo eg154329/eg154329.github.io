@@ -1,4 +1,4 @@
-            .form-row {
+.form-row {
                 grid-template-columns: 1fr;
             }            .recognition-grid {
                 grid-template-columns: 1fr;
@@ -134,12 +134,45 @@
         }
 
         .profile-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            border-radius: 4px;
-        }
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: brightness(0.9);
+    transition: filter 0.5s ease;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(24, 209, 232, 0.4), 
+        rgba(191, 3, 255, 0.3), 
+        rgba(223, 1, 179, 0.4));
+    mix-blend-mode: color;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.image-container:hover::before {
+    opacity: 0;
+}
+
+.image-container:hover .profile-image {
+    filter: brightness(1);
+}
 
         .about-text h1 {
             font-size: 2.5rem;
@@ -568,7 +601,7 @@
             pointer-events: none;
             width: 8px;
             height: 8px;
-            animation: sparkle-fade 1s ease-out forwards;
+            animation: sparkle-fade 1.5s ease-out forwards;
             z-index: 9999;
             box-shadow: 0 0 10px currentColor;
         }
@@ -611,11 +644,14 @@
         <!-- About Section -->
         <section id="about" class="about-section">
             <div class="about-grid">
-                <img src="" alt="Emily Gover" class="profile-image" id="profileImage">
+              <div class="image-container">
+                <img src="headshot.png" alt="Emily Gover" class="profile-image" id="profileImage">
+                </div>
                 <div class="about-text">
                     <h1>Emily Gover</h1>
                     <p class="role">Customer marketing, content, and community strategist.</p>
-                    <p>Award-winning customer marketer, writer, storyteller, and community builder. Thought leader and trusted expert in building best-in-class customer marketing programs in tech. Currently at Docusign, formerly Dropbox, Vimeo, ed tech startups, and libraries. Occasional freelance writer, editor, and consultant.</p>
+                    <p>Award-winning customer marketer, writer, storyteller, and community builder. Thought leader and trusted expert in building best-in-class customer marketing programs in tech.</p>
+<p>Currently at Docusign, formerly Dropbox, Vimeo, ed tech startups, and libraries. Occasional freelance writer, editor, and consultant. Proud member of the Rancho Gordo Bean Club.</p>
                     <div class="cta-buttons">
                         <a href="#experience" class="btn btn-primary">Work Experience</a>
                         <a href="#contact" class="btn btn-secondary">Contact</a>
@@ -768,7 +804,7 @@
         // Load profile image
         async function loadProfileImage() {
             try {
-                const imageData = await window.fs.readFile('tmp7z_p5_r0.jpg');
+                const imageData = await window.fs.readFile('headshot.png');
                 const blob = new Blob([imageData], { type: 'image/jpeg' });
                 const imageUrl = URL.createObjectURL(blob);
                 document.getElementById('profileImage').src = imageUrl;
@@ -790,7 +826,7 @@
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
-         // Cursor sparkle effect
+      // Cursor sparkle effect
         console.log('Sparkle script loaded!');
         const colors = ['#18d1e8', '#bf03ff', '#df01b3'];
         let lastSparkleTime = 0;
