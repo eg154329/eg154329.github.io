@@ -174,6 +174,104 @@
     filter: brightness(1);
 }
 
+      /* Animated corner accents */
+.image-container::before,
+.image-container::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #18d1e8, transparent);
+    animation: pulse-glow 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+.image-container::before {
+    top: -6px;
+    left: -6px;
+}
+
+.image-container::after {
+    top: -6px;
+    right: -6px;
+    background: linear-gradient(270deg, #bf03ff, transparent);
+}
+
+.vertical-top-left,
+.vertical-top-right,
+.horizontal-bottom-left,
+.horizontal-bottom-right,
+.vertical-bottom-left,
+.vertical-bottom-right {
+    position: absolute;
+    background: #18d1e8;
+    animation: pulse-glow 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+.vertical-top-left {
+    width: 2px;
+    height: 40px;
+    top: -6px;
+    left: -6px;
+    background: linear-gradient(180deg, #18d1e8, transparent);
+}
+
+.vertical-top-right {
+    width: 2px;
+    height: 40px;
+    top: -6px;
+    right: -6px;
+    background: linear-gradient(180deg, #bf03ff, transparent);
+}
+
+.horizontal-bottom-left {
+    width: 40px;
+    height: 2px;
+    bottom: -6px;
+    left: -6px;
+    background: linear-gradient(90deg, #df01b3, transparent);
+    animation-delay: 1s;
+}
+
+.vertical-bottom-left {
+    width: 2px;
+    height: 40px;
+    bottom: -6px;
+    left: -6px;
+    background: linear-gradient(0deg, #df01b3, transparent);
+    animation-delay: 1s;
+}
+
+.horizontal-bottom-right {
+    width: 40px;
+    height: 2px;
+    bottom: -6px;
+    right: -6px;
+    background: linear-gradient(270deg, #bf03ff, transparent);
+    animation-delay: 1s;
+}
+
+.vertical-bottom-right {
+    width: 2px;
+    height: 40px;
+    bottom: -6px;
+    right: -6px;
+    background: linear-gradient(0deg, #bf03ff, transparent);
+    animation-delay: 1s;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px currentColor;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 15px currentColor;
+    }
+}
+
         .about-text h1 {
             font-size: 2.5rem;
             font-weight: 700;
@@ -646,6 +744,12 @@
             <div class="about-grid">
               <div class="image-container">
                 <img src="headshot.png" alt="Emily Gover" class="profile-image" id="profileImage">
+                <div class="vertical-top-left"></div>
+    <div class="vertical-top-right"></div>
+    <div class="horizontal-bottom-left"></div>
+    <div class="vertical-bottom-left"></div>
+    <div class="horizontal-bottom-right"></div>
+    <div class="vertical-bottom-right"></div>
                 </div>
                 <div class="about-text">
                     <h1>Emily Gover</h1>
