@@ -1,14 +1,6 @@
-.form-row {
-                grid-template-columns: 1fr;
-            }            .recognition-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-  body { visibility: hidden; }
-</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>emilygover.com</title>
@@ -17,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        body { visibility: hidden; }
+
         * {
             margin: 0;
             padding: 0;
@@ -40,6 +34,7 @@
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
+            visibility: visible;
         }
 
         /* Top Navigation */
@@ -138,45 +133,45 @@
         }
 
         .profile-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    border-radius: 4px;
-    filter: brightness(0.9);
-    transition: filter 0.5s ease;
-}
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: brightness(0.9);
+            transition: filter 0.5s ease;
+        }
 
-.image-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-}
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
 
-.image-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, 
-        rgba(24, 209, 232, 0.4), 
-        rgba(191, 3, 255, 0.3), 
-        rgba(223, 1, 179, 0.4));
-    mix-blend-mode: color;
-    transition: opacity 0.5s ease;
-    z-index: 1;
-    pointer-events: none;
-}
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(24, 209, 232, 0.4), 
+                rgba(191, 3, 255, 0.3), 
+                rgba(223, 1, 179, 0.4));
+            mix-blend-mode: color;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-.image-container:hover::before {
-    opacity: 0;
-}
+        .image-container:hover::before {
+            opacity: 0;
+        }
 
-.image-container:hover .profile-image {
-    filter: brightness(1);
-}
+        .image-container:hover .profile-image {
+            filter: brightness(1);
+        }
 
         .about-text h1 {
             font-size: 2.5rem;
@@ -371,14 +366,14 @@
         }
 
         .tag {
-    padding: 0.25rem 0.7rem;
-    background: rgba(209, 184, 232, 0.1);
-    color: var(--text-primary);
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid #d1b8e8;
-}
+            padding: 0.25rem 0.7rem;
+            background: rgba(209, 184, 232, 0.1);
+            color: var(--text-primary);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #d1b8e8;
+        }
 
         /* Recognition Section */
         .recognition-section {
@@ -393,17 +388,17 @@
         }
 
         .recognition-card {
-    padding: 1.5rem;
-    background: rgba(209, 184, 232, 0.05); /* optional: soft lavender tint */
-    border: 1px solid #d1b8e8;
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+            padding: 1.5rem;
+            background: rgba(209, 184, 232, 0.05);
+            border: 1px solid #d1b8e8;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
 
         .recognition-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(209, 184, 232, 0.4);
-}
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(209, 184, 232, 0.4);
+        }
 
         .recognition-org {
             font-size: 1.1rem;
@@ -594,6 +589,15 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .recognition-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
         /* Smooth Scroll */
@@ -629,7 +633,6 @@
                 transform: scale(0) translateY(-20px);
             }
         }
-      body { visibility: visible; }
     </style>
 </head>
 <body>
@@ -833,7 +836,8 @@
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
-      // Cursor sparkle effect
+        
+        // Cursor sparkle effect
         console.log('Sparkle script loaded!');
         const colors = ['#18d1e8', '#bf03ff', '#df01b3'];
         let lastSparkleTime = 0;
