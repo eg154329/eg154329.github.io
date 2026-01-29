@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+        }
+        
+        .loader {
+            text-align: center;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #ff6b35;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .error {
+            color: #c33;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="message" id="message">Redirecting...</div>
+    </div>
+
+    <script>
+        async function redirect() {
+            try {
+                // Get the path from the URL (e.g., /abc123)
+                const path = window.location.pathname.substring(1);
+                
+                if (!path) {
+                    window.location.href = '/';
+                    return;
+                }
+                
+                // Load the redirects configuration
+                const response = await fetch('/redirects.json');
+                
+                if (!response.ok) {
+                    throw new Error('Configuration not found');
+                }
+                
+                const redirects = await response.json();
+                
+                // Find the matching redirect
+                if (redirects[path]) {
+                    window.location.href = redirects[path];
+                } else {
+                    document.getElementById('message').innerHTML = 
+                        `Short link not found: <strong>${path}</strong><br><br>` +
+                        `<a href="/" style="color: #ff6b35;">Go to homepage</a>`;
+                }
+            } catch (error) {
+                document.getElementById('message').innerHTML = 
+                    'Error loading redirects.<br>' +
+                    'Make sure redirects.json is uploaded to your site.<br><br>' +
+                    `<a href="/" style="color: #ff6b35;">Go to homepage</a>`;
+            }
+        }
+        
+        redirect();
+    </script>
+</body>
+</html>
