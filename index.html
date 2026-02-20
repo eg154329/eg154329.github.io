@@ -382,7 +382,7 @@
 
         .recognition-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-top: 1rem;
         }
@@ -411,6 +411,58 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             line-height: 1.5;
+        }
+
+        /* CliftonStrengths Badges */
+        .strengths-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .strength-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: default;
+        }
+
+        .strength-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Orange = Communication, Woo, Maximizer */
+        .strength-orange {
+            background: rgba(255, 120, 0, 0.1);
+            color: #ff7800;
+            border-color: #ff7800;
+        }
+        .strength-orange:hover {
+            box-shadow: 0 4px 14px rgba(255, 120, 0, 0.35);
+        }
+
+        /* Purple = Consistency */
+        .strength-executing {
+            background: rgba(191, 3, 255, 0.1);
+            color: var(--neon-purple);
+            border-color: var(--neon-purple);
+        }
+        .strength-executing:hover {
+            box-shadow: 0 4px 14px rgba(191, 3, 255, 0.35);
+        }
+
+        /* Blue = Positivity */
+        .strength-relationship {
+            background: rgba(24, 209, 232, 0.1);
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+        }
+        .strength-relationship:hover {
+            box-shadow: 0 4px 14px rgba(24, 209, 232, 0.35);
         }
 
         /* Contact Section */
@@ -600,6 +652,12 @@
             }
         }
 
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .recognition-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
@@ -767,6 +825,18 @@
                 <div class="recognition-card">
                     <div class="recognition-org">CMX</div>
                     <div class="recognition-details">Communications Director, NYC Chapter (2015-2017)</div>
+                </div>
+
+                <div class="recognition-card">
+                    <div class="recognition-org">CliftonStrengths</div>
+                    <div class="recognition-details">Top 5</div>
+                    <div class="strengths-badges">
+                        <span class="strength-badge strength-orange">Communication</span>
+                        <span class="strength-badge strength-orange">Woo</span>
+                        <span class="strength-badge strength-orange">Maximizer</span>
+                        <span class="strength-badge strength-executing">Consistency</span>
+                        <span class="strength-badge strength-relationship">Positivity</span>
+                    </div>
                 </div>
             </div>
         </section>
