@@ -382,9 +382,13 @@
 
         .recognition-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-top: 1rem;
+        }
+
+        .recognition-card-full {
+            grid-column: 1 / -1;
         }
 
         .recognition-card {
@@ -652,11 +656,6 @@
             }
         }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .recognition-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
 
         /* Smooth Scroll */
         html {
@@ -827,7 +826,7 @@
                     <div class="recognition-details">Communications Director, NYC Chapter (2015-2017)</div>
                 </div>
 
-                <div class="recognition-card">
+                <div class="recognition-card recognition-card-full">
                     <div class="recognition-org">CliftonStrengths</div>
                     <div class="recognition-details">Top 5</div>
                     <div class="strengths-badges">
